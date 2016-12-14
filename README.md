@@ -25,4 +25,6 @@ Provides a list of all **p**aused botlings.
 Outputs a list of all **p**aused botlings in /**r**oom/.
 
 ##To Use
+Add script to an unzipped screenshot directory, then run:
 python3 nxnl.py *command here*
+As required.
