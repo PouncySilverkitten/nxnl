@@ -17,11 +17,14 @@ for filename in os.listdir(os.getcwd()):
 
 def printBotsInRoom(room):
     count = 0
-    for bot in botlings:
-        if bot['room'] == room:
-            print(bot['nickname'])
-            count += 1
-    print("%i botlings in &%s:"%(count,room))
+    try:
+        for bot in botlings:
+            if bot['room'] == room:
+                print(bot['nickname'])
+                count += 1
+        print("%i botlings in &%s:"%(count,room))
+    except:
+        print("Room not specified or found.")
 
 def printStatsForBot(bot):
     code = ""
@@ -58,20 +61,15 @@ for i in range(0,len(sys.argv)):
     if "--help" in sys.argv[i]:
         print("""Flags:
 -r prints rooms in order of highest boting occupancy
--l room prints all botlings present in a room
--n prints a list of all botlings in snapshot
+-l prints a list of all botlings in snapshot
+-lr room prints all botlings present in a room
 -d prints a list of all botlings with more than one instance
 -s @botname prints information about a specific bot
 -p prints a list of all paused botlings
 -pr room prints a list of all paused botlings in &room""")
-    elif "-l" in sys.argv[i]:
-        try:
-            printBotsInRoom(sys.argv[i+1])
-        except:
-            print("Room not specified.")
     elif "-r" in sys.argv[i]:
         printRoom = True
-    elif "-n" in sys.argv[i]:
+    elif "-l" in sys.argv[i]:
         printName = True
     elif "-d" in sys.argv[i]:
         printDuplicates = True
@@ -84,6 +82,8 @@ for i in range(0,len(sys.argv)):
         printPausedInRoom(sys.argv[i+1])
     elif "-p" in sys.argv[i]:
         printPaused = True
+    elif "-lr" in sys.argv[i]:
+        printBotsInRoom(sys.argv[i+1])
 
 if printRoom:
     print("Rooms:\n")
