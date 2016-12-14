@@ -23,3 +23,6 @@ Provides a list of all *p*aused botlings.
 
 ###-pr /room/
 Outputs a list of all *p*aused botlings in /*r*oom/.
+
+##To Use
+python3 nxnl.py **command here**
